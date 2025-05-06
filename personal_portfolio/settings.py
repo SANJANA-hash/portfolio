@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,9 +30,13 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-MEDIA_ROOT = BASE_DIR / "uploads/"
-MEDIA_URL = "media/"
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # for Render
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # for uploaded images
+
+# Whitenoise for static file handling
 
 INSTALLED_APPS = [
     'pages',
